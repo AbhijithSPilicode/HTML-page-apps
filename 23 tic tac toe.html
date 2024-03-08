@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+        body {
+            font-family: Arial, sans-serif;
+            display: grid;
+
+            background-color: dodgerblue ;
+        }
+        .title{
+            -webkit-text-fill-color: rgb(249, 158, 20); /* Will override color (regardless of order) */
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: rgb(247, 241, 241);
+            font-family: 'Fredoka One', sans-serif;
+            font-size: xx-large;
+            text-align:center;
+            justify-content:center;
+            align-items: center;
+}
+
+        #board {
+            width:20%;
+            height:20%;
+            border:0px;
+            margin:auto;
+            display:grid;
+            gap: 10px;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows:repeat(3,1fr);
+        }
+
+        .cell {
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgb(244, 240, 240);
+            border-radius:10px;
+            background-color: white;
+            font-size: 2em;
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            -webkit-text-fill-color: rgb(249, 158, 20); /* Will override color (regardless of order) */
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color:;
+            font-family: 'Fredoka One', sans-serif;
+            font-size:xx-large;
+        }
+
+        .cell:hover {
+            background-color: rgb(248, 184, 241);
+        }
+        #restart {
+            width: 120px;
+            height:40px;
+            font-size: 1.5em;
+            cursor: pointer;
+            background-color: rgb(230, 195, 19);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="title"><h1>TIC TAC TOE</h1></div>
+<div id="board"></div>
+<div><button id="restart"><img src="data:image/png;base64,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" width=15px height=15px>Restart</button></div>
+
+<script>
+    // Game logic
+    const board = document.getElementById('board');
+    const cells = [];
+    let currentPlayer = 'X';
+    let gameActive = true;
+    const message = document.querySelector('.message');
+
+    // Initialize the game board
+    for (let i = 0; i < 9; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.addEventListener('click', () => makeMove(i));
+        board.appendChild(cell);
+        cells.push(cell);
+    }
+
+    function makeMove(index) {
+        if (!gameActive || cells[index].textContent !== '') return;
+
+        cells[index].textContent = currentPlayer;
+
+        if (checkWinner()) {
+            alert( `Player ${currentPlayer} wins!`);
+            gameActive = false;
+        } else if (isBoardFull()) {
+            alert('It\'s a draw!');
+            gameActive = false;
+        } else {
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        }
+    }
+
+    function checkWinner() {
+        const winningCombos = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+            [0, 4, 8], [2, 4, 6]             // Diagonals
+        ];
+
+        for (const combo of winningCombos) {
+            const [a, b, c] = combo;
+            if (cells[a].textContent !== '' &&
+                cells[a].textContent === cells[b].textContent &&
+                cells[a].textContent === cells[c].textContent) {
+                cells[a].style.backgroundColor = cells[b].style.backgroundColor = cells[c].style.backgroundColor = 'lightgreen';
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function isBoardFull() {
+        for (const cell of cells) {
+            if (cell.textContent === '') {
+                return false;
+            }
+        }
+        return true;
+    }
+    var resetButton=document.getElementById('restart')
+    function resetGame(){
+    window.location.reload()
+    }
+    resetButton.addEventListener("click",function(){
+    resetGame()    
+    })
+
+</script>
+
+</body>
+</html>
