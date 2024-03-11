@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="25 rockpaper.css">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <div class="container">
+        <div class="score">
+         <span id="player1scores">0</span><span>-</span><span id="player2scores">0</span>
+        </div> 
+        <div id="game">
+            <div id="userChoice" class="choice">
+                <p>You</p>
+                <div id="userImage"></div>
+                <div id="options">
+                    <button onclick="userChoice('rock')"><img src='https://github.com/Kalvium-Program/rock-paper-scissors-boilerplate/blob/main/assets/rock-logo.png?raw=true'></button>
+                    <button onclick="userChoice('paper')"><img src='https://github.com/Kalvium-Program/rock-paper-scissors-boilerplate/blob/main/assets/paper-logo.png?raw=true'></button>
+                    <button onclick="userChoice('scissors')"><img src='https://github.com/Kalvium-Program/rock-paper-scissors-boilerplate/blob/main/assets/scissors-logo.png?raw=true'> </button>
+                </div>
+            </div>
+        <div><img src="https://github.com/Kalvium-Program/rock-paper-scissors-boilerplate/blob/main/assets/vs.png?raw=true "></div>
+
+            <div id="computerChoice" class="choice">
+                <p>Comp</p>
+                <div id="computerImage"></div>
+        </div>
+    </div>
+    <div id="result"></div> 
+    <div><button id="restart">Play Again</button></div>   
+    </div>
+
+
+    <script src="25 rockpaper.js"></script>
+</body>
+</html>
