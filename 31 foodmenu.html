@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foodmenu</title>
+  <link rel="stylesheet" href="31 foodmenu.css">
+</head>
+<body>
+  <header>
+    <h1>FoodMenu</h1>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search meals...">
+      <button onclick="searchMeal()">Search</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="meals-container" id="mealsContainer">
+    </div>
+  </main>
+
+  <div id="mealDetailsModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <img src="" id="mealImage" alt="Meal Image">
+      <h3>Ingredients:</h3>
+      <ul id="modalIngredients"></ul>
+    </div>
+  </div>
+
+  <script src="31 foodmenu.js"></script>
+</body>
+</html>
